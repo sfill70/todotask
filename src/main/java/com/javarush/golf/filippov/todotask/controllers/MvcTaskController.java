@@ -42,16 +42,16 @@ public class MvcTaskController {
     }
 
     @GetMapping("/search")
-    @ResponseBody
-    public String searchTaskAll(@RequestParam(required = false) String description, Model model /*@RequestParam(required = false) Map<String, String> allParams*/) {
-        List<Task> todoTasks;
+    public String searchTaskAll(Model model, @RequestParam(required = false) String description /*@RequestParam(required = false) Map<String, String> allParams*/) {
+        List<Task> tasks;
         if (description != null) {
-            todoTasks = todoTaskRepository.findByDescription(description);
+            tasks = todoTaskRepository.findByDescription(description);
         } else {
-            todoTasks = todoTaskRepository.findAll();
+            tasks = todoTaskRepository.findAll();
         }
-        model.addAttribute("tasks", todoTasks);
-        model.addAttribute("tasksCount", todoTasks.size());
+        System.out.println(tasks);
+        model.addAttribute("tasks", tasks);
+        model.addAttribute("tasksCount", tasks.size());
         return "search";
     }
 
@@ -93,7 +93,7 @@ public class MvcTaskController {
         Optional<Task> task = todoTaskRepository.findById(id);
         if (task.isPresent()) {
             Task todoTask = task.get();
-            String answer = "Edit page Id=" +id;
+            String answer = "Edit page Id=" + id;
             model.addAttribute("todoTask", todoTask);
             model.addAttribute("view", true);
             model.addAttribute("title", answer);
@@ -125,7 +125,7 @@ public class MvcTaskController {
     @RequestMapping(value = "/dlt/", method = RequestMethod.POST)
     public String delete(Model model, @RequestParam(value = "id", required = false) Optional<Integer> id) {
 //        System.out.println(id+" !!!!!!!!!!!!!!");
-       todoTaskRepository.deleteById(id.get());
+        todoTaskRepository.deleteById(id.get());
         return "redirect:/";
     }
 }

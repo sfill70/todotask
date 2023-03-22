@@ -124,8 +124,12 @@ public class RestTaskController {
     @GetMapping("/tasks/search_title")
     @ResponseBody
     public List<Task> filterLst(@RequestParam(required = false) String description/*, @RequestParam(required = false) String status*/) {
+        System.out.println(description+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        if(description.equalsIgnoreCase("magic word")){
+            return list();
+        }
         if (description == null || description.isEmpty()) {
-           /* if (status == null || status.isEmpty()) {
+            /*if (status == null || status.isEmpty()) {
                 return todoTaskRepository.findAll();
             }
             return todoTaskRepository.findByStatus(status);*/
