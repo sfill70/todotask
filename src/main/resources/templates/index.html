@@ -67,8 +67,6 @@
             </table>
         </div>
         <br><br>
-        <button class="btn btn-success" onclick="window.open('/search?description=','_blank')">Search</button>
-        <br><br>
         <form action="/search" target="_blank">
             <button>Поиск</button>
         </form>
@@ -78,12 +76,16 @@
                th:if="${countPage > 0}"
                th:each="pageNumber : ${pageNumbers}">
                 <a
-                   th:href="@{/(page=${pageNumber})}"
-                   th:text="${pageNumber}"
-                   th:attr="data-id=${pageNumber}"
+                        th:href="@{/(page=${pageNumber})}"
+                        th:text="${pageNumber}"
+                        th:attr="data-id=${pageNumber}"
                 ></a>
             </b>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 </div>
 
@@ -157,7 +159,7 @@
 <script>
     $(function () {
         $(".btn").click(
-        // $("#del").click(
+            // $("#del").click(
             function () {
                 var description = $(this).attr('value');
                 var id = $(this).attr('data-id');

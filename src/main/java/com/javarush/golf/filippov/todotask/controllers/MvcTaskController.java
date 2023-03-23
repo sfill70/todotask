@@ -1,7 +1,8 @@
 package com.javarush.golf.filippov.todotask.controllers;
 
+import com.javarush.golf.filippov.todotask.model.Status;
 import com.javarush.golf.filippov.todotask.model.Task;
-import com.javarush.golf.filippov.todotask.model.TaskRepository;
+import com.javarush.golf.filippov.todotask.repository.TaskRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -42,10 +43,24 @@ public class MvcTaskController {
     }
 
     @GetMapping("/search")
-    public String searchTaskAll(Model model, @RequestParam(required = false) String description /*@RequestParam(required = false) Map<String, String> allParams*/) {
+    public String searchTaskAll(Model model, @RequestParam(required = false) String description/*, @RequestParam(required = false) String status *//*@RequestParam(required = false) Map<String, String> allParams*/) {
         List<Task> tasks;
         if (description != null) {
             tasks = todoTaskRepository.findByDescription(description);
+        } else {
+            tasks = todoTaskRepository.findAll();
+        }
+        System.out.println(tasks);
+        model.addAttribute("tasks", tasks);
+        model.addAttribute("tasksCount", tasks.size());
+        return "search";
+    }
+
+    @GetMapping("/search_st")
+    public String searchTaskStatus(Model model, @RequestParam(required = false) String status /*@RequestParam(required = false) Map<String, String> allParams*/) {
+        List<Task> tasks;
+        if (status != null) {
+            tasks = todoTaskRepository.findByStatus(Status.valueOf(status));
         } else {
             tasks = todoTaskRepository.findAll();
         }
@@ -124,7 +139,6 @@ public class MvcTaskController {
 
     @RequestMapping(value = "/dlt/", method = RequestMethod.POST)
     public String delete(Model model, @RequestParam(value = "id", required = false) Optional<Integer> id) {
-//        System.out.println(id+" !!!!!!!!!!!!!!");
         todoTaskRepository.deleteById(id.get());
         return "redirect:/";
     }

@@ -3,8 +3,9 @@ package com.javarush.golf.filippov.todotask.controllers;
 
 import com.javarush.golf.filippov.todotask.exception.EntityNotFoundException;
 import com.javarush.golf.filippov.todotask.exception.MyRequestException;
+import com.javarush.golf.filippov.todotask.model.Status;
 import com.javarush.golf.filippov.todotask.model.Task;
-import com.javarush.golf.filippov.todotask.model.TaskRepository;
+import com.javarush.golf.filippov.todotask.repository.TaskRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -73,6 +74,30 @@ public class RestTaskController {
         return new ArrayList<Task>((Collection<? extends Task>) optionalTodoTask);
     }
 
+    @GetMapping("/tasks/search_rest")
+    @ResponseBody
+    public List<Task> filterLst(@RequestParam(required = false) String description, @RequestParam(required = false) String status) {
+        if (description == null || description.isEmpty()) {
+            if (status == null || status.isEmpty()) {
+                return todoTaskRepository.findAll();
+            }
+            return todoTaskRepository.findByStatus(Status.valueOf(status));
+        }
+        if (status == null || status.isEmpty()) {
+            return todoTaskRepository.findByDescription(description);
+        }
+        return todoTaskRepository.findStatusAndLikeDescription(Status.valueOf(status),description);
+    }
+    private String getValue(List<Task> todoTasks, Map.Entry<String, String> param, int i) {
+        String value = "";
+        if (param.getKey().strip().equalsIgnoreCase(Task.getValues().get(1))) {
+            value = todoTasks.get(i).getDescription();
+        } else if (param.getKey().strip().equalsIgnoreCase(Task.getValues().get(2))) {
+            value = todoTasks.get(i).getStatus().toString();
+        }
+        return value;
+    }
+
 /*    @GetMapping("/tasks/search")
     @ResponseBody
     public List<Task> filterLst(@RequestParam Map<String, String> allParams) {
@@ -110,37 +135,8 @@ public class RestTaskController {
         return todoTasks;
     }*/
 
-    private String getValue(List<Task> todoTasks, Map.Entry<String, String> param, int i) {
-        String value = "";
-        if (param.getKey().strip().equalsIgnoreCase(Task.getValues().get(1))) {
-            value = todoTasks.get(i).getDescription();
-        } else if (param.getKey().strip().equalsIgnoreCase(Task.getValues().get(2))) {
-            value = todoTasks.get(i).getStatus().toString();
-        }
-        return value;
-    }
-
-
-    @GetMapping("/tasks/search_title")
-    @ResponseBody
-    public List<Task> filterLst(@RequestParam(required = false) String description/*, @RequestParam(required = false) String status*/) {
-        System.out.println(description+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        if(description.equalsIgnoreCase("magic word")){
-            return list();
-        }
-        if (description == null || description.isEmpty()) {
-            /*if (status == null || status.isEmpty()) {
-                return todoTaskRepository.findAll();
-            }
-            return todoTaskRepository.findByStatus(status);*/
-        }
-        return todoTaskRepository.findByDescription(description);
-
-    }
-
     @GetMapping("/hello")
     ResponseEntity<String> hello() {
         return new ResponseEntity<>("Hello World!", HttpStatus.OK);
     }
-
 }
