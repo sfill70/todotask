@@ -18,43 +18,42 @@
 <body>
 <div class="container">
     <div class="container-fluidr mt-4" style="background: beige">
-
         <br><br>
         <div class="mt-4 ml-3">
-            <!-- <b class="mt-4 ml-3"> Title </b>
-             <h5 class="lt=4"><span th:text="${title}"></span></h5>-->
-            <b class="mt-4 ml-3">Description:</b>
+            <p class="mt-4 ml-3">Description:</p>
             <p><span class="lt=4"><span th:text="${description}"></span></span></p>
             <p class="mt-4 ml-3">Status :
                 <span class="lt=4"><span th:text="${status}"></span></span></p>
         </div>
         <br><br>
         <div th:if="${view}">
+            <a class="btn btn-secondary mr-3"
+               th:href="@{/}"
+               th:text="Home"></a>
+            <a class="btn btn-secondary mr-3"
+               th:href="@{/put/{todoId}(todoId=${task.id})}"
+               th:attr="data-id=${task.id}"
+               th:text="Edit"></a>
             <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delModal">
+            <button type="button" class="btn btn-primary  float-right" data-toggle="modal" data-target="#delModal">
                 Удалить
-            </button>
-            <button type="button" class="btn btn-secondary"
-                    onclick="location.href='/' ">На главную
             </button>
             <!-- The Modal -->
             <div class="modal" id="delModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">Удалить</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <!-- Modal body -->
-                        <!--th:object="${todoTask}"-->
                         <div class="modal-body">
                             <form class="mt-4" th:action="@{/del/{todoId}(todoId=${task.id})}"
                                   method="post">
                                 <h6 style="color:red">Вы уверены что хотите удалить?</h6>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                        onclick="location.href='/' ">Нет
+                                        th:href="@{/}">Нет
                                 </button>
                                 <button type="submit" value="Submit" class="btn btn-primary">Удалить</button>
                             </form>
@@ -65,51 +64,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
-            <span class="float-right mr-3"><b>Редактировать: </b><a th:href="@{/put/{todoId}(todoId=${task.id})}"
-                                                                    th:attr="data-id=${task.id}"
-                                                                    th:text="${task.description}"></a>
-            </span>
         </div>
-
-        <!--<script>
-            $(document).ready(function () {
-                $(".btn-get-put").click(function () {
-                    $.ajax({
-                        url: "@{/put/{todoId}(todoId=${task.id})}",
-                        dataType: 'text',
-                        success: function (data) {
-                            alert(data);
-                            <div>    </div>
-                        }
-                    });
-                });
-            });
-        </script>
-        <div id="myModal">    </div>
-
-            <button type="button" class="btn-get-put">
-                Редактировать
-            </button>
-
-
-        <a class="btn btn-primary" data-toggle="modal" href="task_put.html" data-target="#MyModal">OPEN MODAL</a>-->
-        <!--<div>
-            <script>
-                $.ajax({
-                    url: "@{/put/{todoId}(todoId=${task.id})}",
-                    dataType: 'text',
-                    success: function(data) {
-                        alert(data);
-                        $('<div><button type="button" class="btn btn-default btn-sm" href="task_put.html" data-toggle="modal" data-target="#myModal" >Редактировать</button></div>')
-                    }
-                });
-
-            </script>
-        </div>-->
     </div>
 </div>
 </body>

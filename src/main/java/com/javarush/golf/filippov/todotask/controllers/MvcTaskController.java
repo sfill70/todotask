@@ -24,7 +24,7 @@ public class MvcTaskController {
     private TaskRepository todoTaskRepository;
 
 
-    @GetMapping("/")
+    @GetMapping({"/", "/todotask/"})
     public String viewTaskAll(Model model, @RequestParam(value = "page", required = false, defaultValue = "1") Optional<Integer> page) {
         Pageable pageable = PageRequest.of(page.get() - 1, 10);
         model.addAttribute("todoTask", new Task());
@@ -42,7 +42,7 @@ public class MvcTaskController {
         return "index";
     }
 
-    @GetMapping("/search")
+    @GetMapping({"/search","/todotask/search", "/*/search","*/search"})
     public String searchTaskAll(Model model, @RequestParam(required = false) String description/*, @RequestParam(required = false) String status *//*@RequestParam(required = false) Map<String, String> allParams*/) {
         List<Task> tasks;
         if (description != null) {
@@ -56,7 +56,7 @@ public class MvcTaskController {
         return "search";
     }
 
-    @GetMapping("/search_st")
+    @GetMapping({"/search_st","/todotask/search_st","/*/search_st", "*/search_st"})
     public String searchTaskStatus(Model model, @RequestParam(required = false) String status /*@RequestParam(required = false) Map<String, String> allParams*/) {
         List<Task> tasks;
         if (status != null) {
@@ -103,6 +103,7 @@ public class MvcTaskController {
         return "task_view";
     }
 
+//use task_put.html
     @RequestMapping(value = "/put/{id}", method = RequestMethod.GET)
     public String taskViewPut(@PathVariable int id, Model model) {
         Optional<Task> task = todoTaskRepository.findById(id);
@@ -121,6 +122,7 @@ public class MvcTaskController {
         return "task_put";
     }
 
+    //use modal window task_put.html
     @RequestMapping(value = "/put/{id}", method = RequestMethod.POST)
     public String taskPut(@PathVariable int id, @Valid @ModelAttribute Task task, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -131,12 +133,14 @@ public class MvcTaskController {
         return "redirect:/{id}";
     }
 
+//    use modal window task_view.html
     @RequestMapping(value = "/del/{id}", method = RequestMethod.POST)
     public String deleteTask(@PathVariable int id, Model model) {
         todoTaskRepository.deleteById(id);
         return "redirect:/";
     }
 
+//    use modal window index.html
     @RequestMapping(value = "/dlt/", method = RequestMethod.POST)
     public String delete(Model model, @RequestParam(value = "id", required = false) Optional<Integer> id) {
         todoTaskRepository.deleteById(id.get());

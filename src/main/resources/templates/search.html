@@ -22,8 +22,10 @@
             function doAjax() {
                 var searchQuery = document.getElementById("search_input").value;
                 var searchStatus = document.getElementById("search_status").value;
+                var uri = $(document.getElementById("search_input")).attr('href');;
                 $.ajax({
-                    url: "/api/tasks/search_rest",
+                    // url: "todotask/api/tasks/search_rest",
+                    url: uri,
                     type: 'GET',
                     dataType: 'json',
                     data: {
@@ -37,11 +39,11 @@
                         for (let elem of data) {
                             var $id = $('<span>').text("Id=" + elem['id'] + "  :  ");
                             var $description = $('<span>').text(elem['description'] + "  :  ");
-                            var $status = $('<span>').text(elem['status']);
+                            var $status = $('<span>').text(elem['status'] + "  :  ");
                             var $d = $('<div>')
                             $('#info')
                                 .append($id)
-                                .append($description).append($status).append($d);
+                                .append($description).append($status).append(uri).append($d);
                         }
                     })
                 });
@@ -49,18 +51,18 @@
         </script>
 
         <form>
-            <label for="search_input">Search description and status: RestController (if both fields are empty, all tasks
-                are displayed)</label>
-            <p><input type="text" id="search_input" name="description">Description</p>
-            <p>Status: <select id="search_status" type="text" name="status"/></p>
-            <option></option>
-            <option>IN_PROGRESS</option>
-            <option>DONE</option>
-            <option>PAUSED</option>
-            </select>
-            <p>
-                <button onclick="doAjax()" type="button">GO</button>
-            </p>
+        <label for="search_input">Search description and status: RestController (if both fields are empty, all tasks
+            are displayed)</label>
+        <p><input type="text" id="search_input" name="description" th:href="@{/api/tasks/search_rest}">Description</p>
+        <p>Status: <select id="search_status" type="text" name="status"/></p>
+        <option></option>
+        <option>IN_PROGRESS</option>
+        <option>DONE</option>
+        <option>PAUSED</option>
+        </select>
+        <p>
+            <button onclick="doAjax()" type="button">GO</button>
+        </p>
         </form>
         <div id="info"></div>
 
@@ -124,6 +126,13 @@
                 </tr>
             </table>
         </div>
+        <a class="btn btn-secondary mr-3"
+           th:href="@{/}"
+           th:text="Home"></a>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 </div>
 
@@ -145,7 +154,7 @@
                 <form class="mt-4" id="delete_form" action="" method="post">
                     <h6 style="color:red">Вы уверены что хотите удалить?</h6>
                     <button type="button" class="btn-dark" data-dismiss="modal"
-                            onclick="location.href='/' ">Нет
+                            th:href="@{/}">Нет
                     </button>
                     <button type="submit" value="Submit"
                             class="btn-dark" style="background:blue">Удалить

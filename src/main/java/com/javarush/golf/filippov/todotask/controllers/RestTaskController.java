@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = {"/api", "/todotask/api","*/todotask/api","*/api"}, produces = MediaType.APPLICATION_JSON_VALUE)
 public class RestTaskController {
 
     @Autowired

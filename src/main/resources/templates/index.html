@@ -67,9 +67,15 @@
             </table>
         </div>
         <br><br>
-        <form action="/search" target="_blank">
+        <form th:action="@{/search}" target="_blank">
             <button>Поиск</button>
         </form>
+
+        <!--<br><br><p>так делать не надо, только отностиельный URI или как он там называется</p>
+        <form action="/search" target="_blank">
+            <button>Поиск</button>
+        </form>-->
+
         <!--цикл страниц-->
         <div class="row align-content-lg-center" style="padding-left: 20%; position: relative">
             <b class="btn-group" style="width: 10%"
@@ -107,7 +113,7 @@
                 <form class="mt-4" id="delete_form" action="" method="post">
                     <h6 style="color:red">Вы уверены что хотите удалить?</h6>
                     <button type="button" class="btn-dark" data-dismiss="modal"
-                            onclick="location.href='/' ">Нет
+                            th:href="@{/}">Нет
                     </button>
                     <button type="submit" value="Submit"
                             class="btn-dark" style="background:blue">Удалить
