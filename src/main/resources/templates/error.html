@@ -8,9 +8,9 @@
 <div>
   <h2 class="lt=4"><span th:text="${title}"></span></h2>
   <div>
-    <button type="button" class="btn btn-secondary"
-            onclick="location.href='/' ">На главную
-    </button>
+      <a class="btn btn-secondary mr-3"
+         th:href="@{/}"
+         th:text="Home"></a>
   </div>
 </div>
 </body>
