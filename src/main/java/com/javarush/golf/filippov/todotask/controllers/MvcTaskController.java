@@ -103,7 +103,6 @@ public class MvcTaskController {
         return "task_view";
     }
 
-//use task_put.html
     @RequestMapping(value = "/put/{id}", method = RequestMethod.GET)
     public String taskViewPut(@PathVariable int id, Model model) {
         Optional<Task> task = todoTaskRepository.findById(id);
@@ -122,7 +121,6 @@ public class MvcTaskController {
         return "task_put";
     }
 
-    //use modal window task_put.html
     @RequestMapping(value = "/put/{id}", method = RequestMethod.POST)
     public String taskPut(@PathVariable int id, @Valid @ModelAttribute Task task, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

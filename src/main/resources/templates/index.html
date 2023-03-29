@@ -48,11 +48,6 @@
                            th:text="Edit"></a>
                     </td>
                     <td th:with="num = ${task.getId()}">
-                        <!--<form th:action="@{/dlt/(id=${task.getId()})}" method="post">
-                            <button type="submit" value="Submit"
-                                    class="btn btn-primary">Удалить
-                            </button>
-                        </form>-->
                         <!--             The Button Modal Delete -->
                         <button id="del" type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#delModal"
