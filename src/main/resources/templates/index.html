@@ -52,7 +52,9 @@
                         <button id="del" type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#delModal"
                                 th:attr="data-id=${task.id}"
-                                th:value="${task.getDescription()}">Удалить
+                                th:value="${task.getDescription()}"
+                                th:href="@{/dlt/}">Удалить
+
                         </button>
                     </td>
                     <td>
@@ -62,7 +64,8 @@
             </table>
         </div>
         <br><br>
-        <form th:action="@{/search}" target="_blank">
+        <form th:action=" @{
+                        /search}" target="_blank">
             <button>Поиск</button>
         </form>
 
@@ -164,8 +167,9 @@
             function () {
                 var description = $(this).attr('value');
                 var id = $(this).attr('data-id');
-                var uri = "/del/" + id;
-                let uri2 = "/dlt/?id=" + id
+                var uri = $(this).attr('href');
+                var uri1 = uri + id;
+                let uri2 = uri + "?id=" + id
 
                 $(".description").html('<p class="h5">' + description + '</p>');
                 $(".Idinfo").html('<p><strong>Id=</strong>' + id + '</p>');
