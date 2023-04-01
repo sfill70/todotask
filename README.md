@@ -39,8 +39,12 @@ start page
 add page
 
 ![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_add.png)
+
+view page
+
+![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_add.png)
+
 ![Image alt](https://github.com/sfill70/com.javarush.golf.filippov.todotask/raw/master/src/main/resources/static/img/td_add.png)
-![Image alt](https://raw.githubusercontent.com/sfill70/com/javarush.golf.filippov.todotask/master/src/main/resources/static/img/td_start.png)
 
 put page
 
