@@ -33,7 +33,7 @@ http://localhost:8080/todotask/
 - flyway
 
 ![Image alt](https://github.com/sfill70/ru.javarush.golf.quest/raw/master/src/main/webapp/static/img/start_page.png)
-![Image alt](https://raw.githubusercontent.com/sfill70/ru.javarush.golf.filippov.todotask/master/src/main/resources/static/img/td_start.png)
+![Image alt](https://raw.githubusercontent.com/sfill70/com.javarush.golf.filippov.todotask/master/src/main/resources/static/img/td_start.png)
 ![Image alt](https://raw.githubusercontent.com/sfill70/todotask/tree/master/src/main/resources/static/img/td_add.png)
 ![Image alt](https://raw.githubusercontent.com/sfill70/todotask/tree/master/src/main/resources/static/img/td_dell.png)
 ![Image alt](https://raw.githubusercontent.com/sfill70/todotask/tree/master/src/main/resources/static/img/td_run_container.png)
