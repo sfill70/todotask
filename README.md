@@ -32,11 +32,24 @@ http://localhost:8080/todotask/
 - MySQL
 - flyway
 
+start page
+
 ![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_start.png)
-![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/start_page.png)
+
+add page
+
 ![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_add.png)
 ![Image alt](https://github.com/sfill70/com.javarush.golf.filippov.todotask/raw/master/src/main/resources/static/img/td_add.png)
 ![Image alt](https://raw.githubusercontent.com/sfill70/com/javarush.golf.filippov.todotask/master/src/main/resources/static/img/td_start.png)
-![Image alt](https://raw.githubusercontent.com/sfill70/todotask/tree/master/src/main/resources/static/img/td_add.png)
-![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_dell.png)
+
+put page
+
+![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_put.png)
+
+delete page
+
+![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_del.png)
+
+runing container docker
+
 ![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_run_contailer.png)
