@@ -42,9 +42,11 @@ add page
 
 view page
 
-![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_add.png)
+![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_view.png)
 
-![Image alt](https://github.com/sfill70/com.javarush.golf.filippov.todotask/raw/master/src/main/resources/static/img/td_add.png)
+search page
+
+![Image alt](https://github.com/sfill70/todotask/blob/master/src/main/resources/static/img/td_search_rest2.png)
 
 put page
 
