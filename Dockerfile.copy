@@ -8,10 +8,14 @@
 #COPY src /home/app/src
 #RUN #mvn -f /home/app/pom.xml package
 
-# Install Tomcat  & jdk 17 & ubuntu 22.04
+# Install Tomcat    & jdk 11
+#FROM tomcat:9.0.73-jre11-temurin
+#FROM tomcat:10.0.11-jdk16-corretto
 FROM tomcat:10
 # Copy source files to tomcat folder structure
+#COPY /target/todotask-1.war /usr/local/tomcat/webapps/todotask.war
 COPY /target/todotask-1.war /usr/local/tomcat/webapps/todotask.war
+#COPY --from=build /home/app/target/todotask-1.war /usr/local/tomcat/webapps/todotask.war
 
 EXPOSE 8080
 

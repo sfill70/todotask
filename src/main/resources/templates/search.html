@@ -24,7 +24,6 @@
                 var searchStatus = document.getElementById("search_status").value;
                 var uri = $(document.getElementById("search_input")).attr('href');
                 $.ajax({
-                    // url: "todotask/api/tasks/search_rest",
                     url: uri,
                     type: 'GET',
                     dataType: 'json',

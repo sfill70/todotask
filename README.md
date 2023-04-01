@@ -27,9 +27,7 @@ http://localhost:8080/todotask/
 ## Technologies used
 - Spring
 - Thymeleaf
-- Liquibase
-- jakarta Validator
 - Docker
 - Tomcat
 - MySQL
-- flywaydb
+- flyway
