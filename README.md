@@ -6,7 +6,19 @@ The table was created using flywaydb, file migration db/migration/V1__create_tab
 1. Make sure you have installed docker and ports 8080, 3306 are free
 2. Open a command line in the location where the application is installed and run the command:
    mvn clean install
+   
    if *.war file is successfully created
+   
+   docker compose up
+   
+   Ubuntu
+   
+   sudo docker compose up 
+   
+   If something went wrong, you can try to do this:
+   
+   sudo su
+   
    docker compose up
 
 3. The application will download all dependencies and create a docker container. Docker container will be launched automatically
