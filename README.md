@@ -5,7 +5,7 @@ The table was created using flywaydb, file migration db/migration/V1__create_tab
 ## To run project
 1. Make sure you have installed docker and ports 8080, 3306 are free
 2. Open a command line in the location where the application is installed and run the command:
-   mvn clean install
+   mvn clean install      -to check that the project is building normally
    
    if *.war file is successfully created
    
