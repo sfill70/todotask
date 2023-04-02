@@ -15,9 +15,13 @@ The table was created using flywaydb, file migration db/migration/V1__create_tab
    
    Ubuntu
    
-   sudo docker compose up 
+   sudo docker compose up
+   
+   
    If something went wrong, you can try to do this:
+   
    sudo su
+   
    docker compose up
 
 3. The application will download all dependencies and create a docker container. Docker container will be launched automatically
