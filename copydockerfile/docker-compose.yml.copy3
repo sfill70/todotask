@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   mysql:
-    container_name: mysql3
+    container_name: mysql2
     image: mysql:8
     ports:
       - "3306:3306"
@@ -15,9 +15,9 @@ services:
       retries: 3
       start_period: 10s
   web:
-    container_name: tomcat3
+    container_name: tomcat2
     build: .
-    image: todotask3
+    image: todotask2
     ports:
       - "8080:8080"
     depends_on:
